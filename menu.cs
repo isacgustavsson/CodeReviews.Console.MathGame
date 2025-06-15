@@ -127,7 +127,6 @@ z - Hard");
                             break;
                     }
                 }
-                ;
             } while (isGameOn);
 
         }

@@ -56,19 +56,14 @@ namespace MathGame
             var fifth = random.Next(1, 999);
             var sixth = random.Next(1, 999);
 
-            var result = new int[6];
-            {
-                result[0] = first;
-                result[1] = second;
-                result[2] = third;
-                result[3] = fourth;
-                result[4] = fifth;
-                result[5] = sixth;
-            }
-            
-            Console.WriteLine(result);
-
+            var result = BuildResultArray(first, second, third, fourth, fifth, sixth);
+          
             return result;
+        }
+
+        internal static int[] BuildResultArray(int first, int second, int third, int fourth, int fifth, int sixth)
+        {
+            return new[] { first, second, third, fourth, fifth, sixth };
         }
         internal static string? ValidateResult(string? result)
         {
@@ -79,7 +74,7 @@ namespace MathGame
             }
             return result;
         }
-        internal static string getName()
+        internal static string GetName()
         {
             Console.WriteLine("Please type your name..");
             var name = Console.ReadLine();
