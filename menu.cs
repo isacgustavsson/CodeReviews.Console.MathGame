@@ -1,3 +1,5 @@
+using ConsApps.MathGame.Models;
+
 namespace MathGame
 {
     internal class Menu
@@ -13,6 +15,7 @@ namespace MathGame
             var isGameOn = true;
             do
             {
+                Console.Clear();
                 Console.WriteLine("-------------------------------------------");
                 Console.WriteLine("");
                 Console.WriteLine("What game will you be playing?");
@@ -30,12 +33,28 @@ Q - Quit the program");
 
                 if (GameMode == "a" || GameMode == "s" || GameMode == "m" || GameMode == "d")
                 {
+                    GameType selectedGameType = GameType.Addition;
+
+                    switch (GameMode)
+                    {
+                        case "a": selectedGameType = GameType.Addition; break;
+                        case "s": selectedGameType = GameType.Subtraction; break;
+                        case "m": selectedGameType = GameType.Multiplication; break;
+                        case "d": selectedGameType = GameType.Division; break;
+                    }
+
+                    Console.Clear();
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("");
+                    Console.WriteLine($"{selectedGameType} selected");
+                    Console.WriteLine("");
                     Console.WriteLine("Please select level of difficulty");
                     Console.WriteLine(@"
 x - Easy
 y - Medium
 z - Hard");
-
+                    Console.WriteLine("");
+                    Console.WriteLine("-------------------------------------------");
                     var Level = Console.ReadLine().Trim().ToLower();
 
                     switch (GameMode.Trim().ToLower())
@@ -43,17 +62,17 @@ z - Hard");
                         case "a":
                             if (Level == "x")
                             {
-                                engine.AddGame("Addition Game", 1);
+                                engine.AddGame("Addition Game - Level 1", 1);
                                 Console.WriteLine("");
                             }
                             else if (Level == "y")
                             {
-                                engine.AddGame("Addition Game - Medium", 2);
+                                engine.AddGame("Addition Game - Level 2", 2);
                                 Console.WriteLine("");
                             }
                             else if (Level == "z")
                             {
-                                engine.AddGame("Addition Game - Hard", 3);
+                                engine.AddGame("Addition Game - Level 3", 3);
                                 Console.WriteLine("");
                             }
                             break;
@@ -61,17 +80,17 @@ z - Hard");
                         case "s":
                             if (Level == "x")
                             {
-                                engine.SubGame("Subtraction game - Easy", 1);
+                                engine.SubGame("Subtraction game - Level 1", 1);
                                 Console.WriteLine("");
                             }
                             else if (Level == "y")
                             {
-                                engine.SubGame("Subtraction game - Medium", 2);
+                                engine.SubGame("Subtraction game - Level 2", 2);
                                 Console.WriteLine("");
                             }
                             else if (Level == "z")
                             {
-                                engine.SubGame("Subtraction game - Hard", 3);
+                                engine.SubGame("Subtraction game - Level 3", 3);
                                 Console.WriteLine("");
                             }
                             break;
@@ -79,17 +98,17 @@ z - Hard");
                         case "m":
                             if (Level == "x")
                             {
-                                engine.MultGame("Multiplication game - Easy", 1);
+                                engine.MultGame("Multiplication game - Level 1", 1);
                                 Console.WriteLine("");
                             }
                             else if (Level == "y")
                             {
-                                engine.MultGame("Multiplication game - Medium", 2);
+                                engine.MultGame("Multiplication game - Level 2", 2);
                                 Console.WriteLine("");
                             }
                             else if (Level == "z")
                             {
-                                engine.MultGame("Multiplication game - Hard", 3);
+                                engine.MultGame("Multiplication game - Level 3", 3);
                                 Console.WriteLine("");
                             }
                             break;
@@ -97,22 +116,21 @@ z - Hard");
                         case "d":
                             if (Level == "x")
                             {
-                                engine.DivGame("Division game", 1);
+                                engine.DivGame("Division game - Level 1", 1);
                                 Console.WriteLine("");
                             }
                             else if (Level == "y")
                             {
-                                engine.DivGame("Division game", 2);
+                                engine.DivGame("Division game - Level 2", 2);
                                 Console.WriteLine("");
                             }
                             else if (Level == "z")
                             {
-                                engine.DivGame("Division game", 3);
+                                engine.DivGame("Division game - Level 3", 3);
                                 Console.WriteLine("");
                             }
                             break;
                     }
-
                 }
                 else if (GameMode == "v" || GameMode == "q")
                 {
@@ -128,7 +146,6 @@ z - Hard");
                     }
                 }
             } while (isGameOn);
-
         }
     }
 }
